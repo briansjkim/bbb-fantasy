@@ -16,32 +16,32 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
+## Product Name ##
   > Big Baller Brian Fantasy
 
-## Sub-Heading ##
-  > Product is for basketball fans who play NBA Fantasy
+## Who The Product Is For ##
+  > This product is for basketball fans who play NBA Fantasy
 
-## Summary ##
+## What This Product Is For ##
   > This product is designed for basketball fans to choose from any of the players provided to create their best team.
 
-## Problem ##
+## Problem In Regular Fantasy ##
   > For those who play NBA Fantasy, they never get to choose all the players they want because other competitors can take them.
 
-## Solution ##
-  > In this app, you can create your team with all of the players that you want without worrying about losing them to other competitors.
+## Solution For The Problem ##
+  > In this product, you can create your team with all of the players that you want without worrying about losing them to other competitors.
 
-## Quote from You ##
-  > "This is the best app to envision your dream team."
+## Quote from Designer ##
+  > "This is the best product to envision your dream team."
 
 ## How to Get Started ##
   > Users are given a list of players to choose from and they can decide whoever they want to add to their team.
 
 ## Customer Quote ##
-  > "I created my dream team on this app but when I played fantasy with my friends, they took some of the players that I wanted."
+  > "I created my dream team on this product but when I played fantasy with my friends, they took some of the players that I wanted."
 
 ## Starting BBB Fantasy ##
-  1. To start the app, run the following command:
+  1. To start the product, run the following command:
    > npm run build
    > npm run start
   2. Go to the localhost port number and start playing
