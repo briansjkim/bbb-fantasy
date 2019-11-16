@@ -41,14 +41,5 @@ Once the project moves into development, the press release can be used as a touc
   > "I created my dream team on this product but when I played fantasy with my friends, they took some of the players that I wanted."
 
 ## Starting BBB Fantasy ##
-  1. To start the product, run the following command:
-   > npm run build
-   > npm run start
-  2. Go to the localhost port number and start playing
-
-## Development ##
-### Installing Dependencies ###
-  From within the root directory:
-   > npm install -g webpack
-   > npm install
+  1. To start the product, go to the README where you'll find all the directions.
   
