@@ -17,28 +17,38 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+  > Big Baller Brian Fantasy
 
 ## Sub-Heading ##
   > Product is for basketball fans who play NBA Fantasy
 
 ## Summary ##
-  > 
+  > This product is designed for basketball fans to choose from any of the players provided to create their best team.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  > For those who play NBA Fantasy, they never get to choose all the players they want because other competitors can take them.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  > In this app, you can create your team with all of the players that you want without worrying about losing them to other competitors.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  > "This is the best app to envision your dream team."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  > Users are given a list of players to choose from and they can decide whoever they want to add to their team.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  > "I created my dream team on this app but when I played fantasy with my friends, they took some of the players that I wanted."
 
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+## Starting BBB Fantasy ##
+  1. To start the app, run the following command:
+   > npm run build
+   > npm run start
+  2. Go to the localhost port number and start playing
+
+## Development ##
+### Installing Dependencies ###
+  From within the root directory:
+   > npm install -g webpack
+   > npm install
+  
