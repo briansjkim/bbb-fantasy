@@ -1,0 +1,12 @@
+.playerSection {
+  display: inline-block;
+  border: 0.1px solid black;
+}
+
+.teamSection {
+  display: inline-block;
+  margin-left: 600px;
+  border: 0.1px solid black;
+}
+
+

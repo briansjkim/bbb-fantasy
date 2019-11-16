@@ -33,3 +33,9 @@ bower_components/
 .floobit
 .floo
 .flooignore
+
+# Compiled Dirs
+client/dist/bundle.js
+
+# data
+database/data.js

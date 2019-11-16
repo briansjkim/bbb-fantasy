@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/bbbfantasy');
+mongoose.connect('mongodb://localhost/bbbfantasy', { useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error: '));
@@ -28,6 +28,16 @@ const get = (cb) => {
   });
 };
 
+const getById = (playerId,cb) => {
+  Player.findOne({id: playerId}, (err, player) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, player);
+    }
+  })
+}
+
 const save = (id, name, number, position, team) => {
   var newPlayer = new Player({id, name, number, position, team});
 
@@ -43,4 +53,5 @@ const save = (id, name, number, position, team) => {
 module.exports = {
   save: save,
   get: get,
+  getById: getById
 }
