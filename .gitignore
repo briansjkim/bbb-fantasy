@@ -38,4 +38,5 @@ bower_components/
 bundle.js
 
 # data
-database/data.js
+database/playerData.js
+database/teamData.js

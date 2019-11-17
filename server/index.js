@@ -33,11 +33,18 @@ app.get('/api/fantasy/:playerId', (req, res) => {
 })
 
 app.get('/api/fantasy/team', (req, res) => {
-  //
+  // get all players from your team
+  db.getTeam((err, results) => {
+    if (err) {
+      console.log('Error getting team: ', err);
+    } else {
+      res.send(results);
+    }
+  })
 });
 
 app.post('/api/fantasy/player', (req, res) => {
-
+  // adding new players (if necessary)
 });
 
 app.post('/api/fantasy/team', (req, res) => {
@@ -47,12 +54,16 @@ app.post('/api/fantasy/team', (req, res) => {
 
 
 app.put('/api/fantasy', (req, res) => {
-
+  // update players if trades/number change/etc.
 });
 
-app.delete('/api/fantasy', (req, res) => {
-
+app.delete('/api/fantasy/player', (req, res) => {
+  // delete a player from available players
 });
+
+app.delete('/api/fantasy/team', (req, res) => {
+  // delete player from myteam
+})
 
 
 app.listen(port, () => {
