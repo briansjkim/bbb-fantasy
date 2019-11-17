@@ -11,8 +11,8 @@ app.use(express.static(path.join(__dirname + '/../client/dist')));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/api/fantasy', (req, res) => {
-  db.get((err, results) => {
+app.get('/api/fantasy/player', (req, res) => {
+  db.getPlayer((err, results) => {
     if (err) {
       console.log('Error getting players: ', err);
     } else {
@@ -32,8 +32,17 @@ app.get('/api/fantasy/:playerId', (req, res) => {
   });
 })
 
-app.post('/api/fantasy', (req, res) => {
+app.get('/api/fantasy/team', (req, res) => {
+  //
+});
 
+app.post('/api/fantasy/player', (req, res) => {
+
+});
+
+app.post('/api/fantasy/team', (req, res) => {
+  // add to the team
+  // use db
 });
 
 

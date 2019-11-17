@@ -18,7 +18,31 @@ var playerSchema = new Schema({
 
 var Player = mongoose.model('Player', playerSchema);
 
-const get = (cb) => {
+const Schema = mongoose.Schema;
+var teamSchema = new Schema({
+  id: Number,
+  name: String,
+  number: Number,
+  position: String,
+  team: String
+});
+
+var Team = mongoose.model('Team', teamSchema);
+
+// used for seeding and saving new players
+const save = (id, name, number, position, team) => {
+  var newPlayer = new Player({id, name, number, position, team});
+
+  newPlayer.save((err, player) => {
+    if (err) {
+      console.log('Error saving: ', err);
+    } else {
+      console.log('Database seeded');
+    }
+  });
+};
+// player schema functions
+const getPlayer = (cb) => {
   Player.find((err, data) => {
     if (err) {
       cb(err, null);
@@ -38,17 +62,16 @@ const getById = (playerId,cb) => {
   })
 }
 
-const save = (id, name, number, position, team) => {
-  var newPlayer = new Player({id, name, number, position, team});
 
-  newPlayer.save((err, player) => {
-    if (err) {
-      console.log('Error saving: ', err);
-    } else {
-      console.log('Database seeded');
-    }
-  });
-};
+
+// team schema functions
+const add = () => {
+
+}
+
+const getTeam = () => {
+
+}
 
 module.exports = {
   save: save,

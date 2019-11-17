@@ -1,10 +1,13 @@
 import React from 'react';
 import Player from './Player.jsx';
+import styles from './css/index.css';
 
-const AvailablePlayers = () => {
+const AvailablePlayers = ({players}) => {
   return (
     <div>
-      <Player />
+      {players.map((player, index) =>
+        <Player player={player} key={index} />
+      )}
     </div>
   )
 }

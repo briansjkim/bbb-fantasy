@@ -1,0 +1,45 @@
+.app {
+  display: flex;
+  flex-flow: row;
+  text-align: center;
+}
+
+.heading {
+  text-align: center;
+}
+
+.playerSection {
+  display: inline-block;
+  border-right: 1px hidden;
+  width: 50%;
+  margin: 0 auto;
+  top: 0;
+  overflow-y: auto;
+  height: 500px;
+  text-align: left;
+}
+
+.teamSection {
+  display: inline-block;
+  border-left: 5px hidden;
+  width: 50%;
+  margin: 0 auto;
+  top: 0;
+  position: relative;
+  text-align: left;
+}
+
+.player {
+  border: 0.5px hidden;
+}
+
+.buttonAdd{
+  background-color: white;
+  color: black;
+  border-radius: 2px;
+}
+
+.buttonAdd:hover {
+  background-color: #00FF7F;
+}
+

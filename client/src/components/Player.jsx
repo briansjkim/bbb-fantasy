@@ -1,20 +1,11 @@
 import React from 'react';
+import styles from './css/index.css';
 
-const Player = () => {
+const Player = ({player}) => {
   return (
-    <div>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
-      <p>NOO</p>
+    <div className={styles.player}>
+      {` ${player.name} | ${player.team} - ${player.position}`}
+      <button className={styles.buttonAdd}>Add</button>
     </div>
   )
 }
