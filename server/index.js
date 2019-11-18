@@ -21,16 +21,16 @@ app.get('/api/fantasy/player', (req, res) => {
   })
 });
 
-app.get('/api/fantasy/:playerId', (req, res) => {
-  const { playerId } = req.params;
-  db.getById(playerId, (err, results) => {
-    if (err) {
-      console.log('Error getting player: ', err);
-    } else {
-      res.send(results);
-    }
-  });
-})
+// app.get('/api/fantasy/:playerId', (req, res) => {
+//   const { playerId } = req.params;
+//   db.getById(playerId, (err, results) => {
+//     if (err) {
+//       console.log('Error getting player: ', err);
+//     } else {
+//       res.send(results);
+//     }
+//   });
+// })
 
 app.get('/api/fantasy/team', (req, res) => {
   // get all players from your team

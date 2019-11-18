@@ -20,10 +20,11 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getPlayers();
+    this.getTeam();
   }
 
   getPlayers() {
-    axios.get('/api/fantasy/players')
+    axios.get('/api/fantasy/player')
       .then(res => this.setState({ players: res.data}))
       .catch(error => console.log('Error getting players: ', error));
   }

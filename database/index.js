@@ -78,7 +78,8 @@ const getTeam = (cb) => {
 
 module.exports = {
   save: savePlayer,
-  get: getPlayer,
+  getPlayer: getPlayer,
   getById: getById,
   saveTeam: saveTeam,
+  getTeam: getTeam,
 }
