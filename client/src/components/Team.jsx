@@ -2,6 +2,12 @@ import React from 'react';
 import Guards from './Guards.jsx';
 import PointGuards from './PointGuards.jsx';
 import ShootingGuards from './ShootingGuards.jsx';
+import Forwards from './Forwards.jsx';
+import SmallForwards from './SmallForwards.jsx';
+import PowerForwards from './PowerForwards.jsx';
+import Centers from './Centers.jsx';
+import Util from './Util.jsx';
+import Bench from './Bench.jsx';
 
 const Team = ({team}) => {
   var point = [];
@@ -11,16 +17,32 @@ const Team = ({team}) => {
   var power = [];
   var forwards = [];
   var centers = [];
+  var util = [];
+  var bench = [];
 
   team.forEach(player => {
     if (player.position.includes('PG') && point.length === 1) {
       // for players that are a PG
-      guards.push(player);
-      return;
+      if (guards.length < 1) {
+        guards.push(player);
+        return;
+      } else if (guards.length === 1) {
+        if (util.length < 2) {
+          util.push(player);
+          return;
+        }
+      }
     } else if (player.position.includes('SG') && shooting.length === 1) {
       // for players that are a SG
-      guards.push(player);
-      return;
+      if (guards.length < 1) {
+        guards.push(player);
+        return;
+      } else if (guards.length === 1) {
+        if (util.length < 2) {
+          util.push(player);
+          return;
+        }
+      }
     } else if (player.position.includes('PG')) {
       point.push(player);
       return;
@@ -29,15 +51,43 @@ const Team = ({team}) => {
       return;
     } else if (player.position.includes('SF') && small.length === 1) {
       // for players that are a SF
-      forwards.push(player);
-      return;
+      if (forwards.length < 1) {
+        forwards.push(player);
+        return;
+      } else if (forwards.length === 1) {
+        if (util.length < 2) {
+          util.push(player);
+          return;
+        }
+      }
     } else if (player.position.includes('PF') && power.length === 1) {
       // for players that are a PF
-      forwards.push(player);
+      if (forwards.length < 1) {
+        forwards.push(player);
+        return;
+      } else if (forwards.length === 1) {
+        if (util.length < 2) {
+          util.push(player);
+          return;
+        }
+      }
+    } else if (player.position.includes('SF')) {
+      small.push(player);
+      return;
+    } else if (player.position.includes('PF')) {
+      power.push(player);
       return;
     } else if (player.position.includes('C')) {
-      centers.push(player);
-      return;
+      if (centers.length < 1) {
+        centers.push(player);
+        return;
+      }
+    }
+
+    if (util.length === 2) {
+      if (bench.length < 3) {
+        bench.push(player);
+      }
     }
   })
 
@@ -46,6 +96,15 @@ const Team = ({team}) => {
       <PointGuards players={point} />
       <ShootingGuards players={shooting} />
       <Guards players={guards} />
+      <SmallForwards players={small} />
+      <PowerForwards players={power} />
+      <Forwards players={forwards} />
+      <Centers players={centers} />
+      <Util players={util} />
+      <Bench players={bench} />
+      <div>
+        {`IL: `}
+      </div>
     </div>
   )
 }

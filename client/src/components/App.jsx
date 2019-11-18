@@ -36,7 +36,7 @@ class App extends React.Component {
   }
 
   addToTeam(player) {
-    axios.post('/api/fantasy/team')
+    axios.post('/api/fantasy/team', player)
       .then(res => console.log('Successful Addition'))
       .catch(error => console.log('Error adding: ', error));
   }
@@ -50,7 +50,7 @@ class App extends React.Component {
           <div className={styles.playerSection}>
             <AvailablePlayers
               players={this.state.players}
-              addToTeam={this.add}
+              addToTeam={this.addToTeam}
             />
           </div>
           <h1><u>Your Team</u></h1>

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Guards = ({players}) => {
+const Forwards = ({players}) => {
   return (
     players.map(player => {
       return (
         <div>
-          {`G: ${player.name} | ${player.team} - ${player.position}`}
+          {`F: ${player.name} | ${player.team} - ${player.position}`}
           <button>Drop</button>
         </div>
       )
@@ -13,4 +13,4 @@ const Guards = ({players}) => {
   )
 }
 
-export default Guards;
+export default Forwards;

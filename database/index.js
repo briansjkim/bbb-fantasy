@@ -64,7 +64,7 @@ const saveTeam = (id, name, number, position, team) => {
       console.log('Database seeded');
     }
   })
-}
+};
 
 const getTeam = (cb) => {
   Team.find((err, data) => {
@@ -74,12 +74,23 @@ const getTeam = (cb) => {
       cb(null, data);
     }
   })
+};
+
+const add = (params, cb) => {
+  Team.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team}, (err, results) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  })
 }
 
 module.exports = {
-  save: savePlayer,
+  savePlayer: savePlayer,
   getPlayer: getPlayer,
   getById: getById,
   saveTeam: saveTeam,
   getTeam: getTeam,
+  add: add
 }

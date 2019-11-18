@@ -49,6 +49,14 @@ app.post('/api/fantasy/player', (req, res) => {
 
 app.post('/api/fantasy/team', (req, res) => {
   // add to the team
+  db.add(req.body, (err, results) => {
+    if (err) {
+      console.log('Error adding to team: ', err);
+    } else {
+      res.status(200);
+      res.send(results);
+    }
+  })
   // use db
 });
 
