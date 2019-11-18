@@ -37,6 +37,18 @@
   background-color: white;
   color: black;
   border-radius: 2px;
+  margin: 10px;
+}
+
+.buttonDrop {
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  margin: 10px;
+}
+
+.buttonDrop:hover {
+  background-color: red;
 }
 
 .buttonAdd:hover {

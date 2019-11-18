@@ -49,6 +49,7 @@ app.post('/api/fantasy/player', (req, res) => {
 
 app.post('/api/fantasy/team', (req, res) => {
   // add to the team
+  // console.log(req)
   db.add(req.body, (err, results) => {
     if (err) {
       console.log('Error adding to team: ', err);
@@ -57,7 +58,6 @@ app.post('/api/fantasy/team', (req, res) => {
       res.send(results);
     }
   })
-  // use db
 });
 
 
@@ -66,7 +66,14 @@ app.put('/api/fantasy', (req, res) => {
 });
 
 app.delete('/api/fantasy/player', (req, res) => {
-  // delete a player from available players
+  db.deletePlayer(req.query, (err, results) => {
+    if (err) {
+      console.log('Error deleting from available players: ', err);
+    } else {
+      res.status(200);
+      res.send(results);
+    }
+  })
 });
 
 app.delete('/api/fantasy/team', (req, res) => {

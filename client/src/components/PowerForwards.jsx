@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './css/index.css';
 
 const PowerForwards = ({players}) => {
   return (
@@ -6,7 +7,7 @@ const PowerForwards = ({players}) => {
       return (
         <div>
           {`PF: ${player.name} | ${player.team} - ${player.position}`}
-          <button>Drop</button>
+          <button className={styles.buttonDrop}>-</button>
         </div>
       )
     })

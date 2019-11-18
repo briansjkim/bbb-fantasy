@@ -51,6 +51,17 @@ const getById = (playerId,cb) => {
   })
 }
 
+const deletePlayer = (param, cb) => {
+  // console.log(param);
+  Player.deleteOne({id: param.id}, (err, results) => {
+    if (err) {
+      cb(err, null);
+    } else {
+      cb(null, results);
+    }
+  })
+}
+
 var Team = mongoose.model('Team', playerSchema);
 
 // team schema functions
@@ -92,5 +103,6 @@ module.exports = {
   getById: getById,
   saveTeam: saveTeam,
   getTeam: getTeam,
-  add: add
+  add: add,
+  deletePlayer: deletePlayer
 }

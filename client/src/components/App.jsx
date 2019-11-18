@@ -20,7 +20,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getPlayers();
-    this.getTeam();
   }
 
   getPlayers() {
@@ -38,6 +37,12 @@ class App extends React.Component {
   addToTeam(player) {
     axios.post('/api/fantasy/team', player)
       .then(res => console.log('Successful Addition'))
+      .then(() => {
+        // deletes selected player from availablePlayers list
+        axios.delete('/api/fantasy/player', {params: player});
+      })
+      .then(() => this.getPlayers())
+      .then(() => this.getTeam())
       .catch(error => console.log('Error adding: ', error));
   }
 
@@ -47,12 +52,20 @@ class App extends React.Component {
         <h1 className={styles.heading}>BBB Fantasy</h1>
         <div className={styles.app}>
           <h1><u>Available Players</u></h1>
-          <div className={styles.playerSection}>
-            <AvailablePlayers
-              players={this.state.players}
-              addToTeam={this.addToTeam}
-            />
-          </div>
+          <table>
+            <tr>
+              <th>Player</th>
+              <th>FG</th>
+            </tr>
+            <tr className={styles.playerSection}>
+              <AvailablePlayers
+                players={this.state.players}
+                addToTeam={this.addToTeam}
+              />
+            </tr>
+            {/* <div className={styles.playerSection}>
+            </div> */}
+          </table>
           <h1><u>Your Team</u></h1>
           <div className={styles.teamSection}>
             <Team

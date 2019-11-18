@@ -21,7 +21,7 @@ const Team = ({team}) => {
   var bench = [];
 
   team.forEach(player => {
-    if (player.position.includes('PG') && point.length === 1) {
+    if (player.position === 'PG' && point.length === 1) {
       // for players that are a PG
       if (guards.length < 1) {
         guards.push(player);
@@ -32,7 +32,7 @@ const Team = ({team}) => {
           return;
         }
       }
-    } else if (player.position.includes('SG') && shooting.length === 1) {
+    } else if (player.position === 'SG' && shooting.length === 1) {
       // for players that are a SG
       if (guards.length < 1) {
         guards.push(player);
@@ -43,13 +43,13 @@ const Team = ({team}) => {
           return;
         }
       }
-    } else if (player.position.includes('PG')) {
+    } else if (player.position === 'PG') {
       point.push(player);
       return;
-    } else if (player.position.includes('SG')) {
+    } else if (player.position === 'SG') {
       shooting.push(player);
       return;
-    } else if (player.position.includes('SF') && small.length === 1) {
+    } else if (player.position === 'SF' && small.length === 1) {
       // for players that are a SF
       if (forwards.length < 1) {
         forwards.push(player);
@@ -60,7 +60,7 @@ const Team = ({team}) => {
           return;
         }
       }
-    } else if (player.position.includes('PF') && power.length === 1) {
+    } else if (player.position === 'PF' && power.length === 1) {
       // for players that are a PF
       if (forwards.length < 1) {
         forwards.push(player);
@@ -71,13 +71,13 @@ const Team = ({team}) => {
           return;
         }
       }
-    } else if (player.position.includes('SF')) {
+    } else if (player.position === 'SF') {
       small.push(player);
       return;
-    } else if (player.position.includes('PF')) {
+    } else if (player.position === 'PF') {
       power.push(player);
       return;
-    } else if (player.position.includes('C')) {
+    } else if (player.position === 'C') {
       if (centers.length < 1) {
         centers.push(player);
         return;
@@ -102,9 +102,6 @@ const Team = ({team}) => {
       <Centers players={centers} />
       <Util players={util} />
       <Bench players={bench} />
-      <div>
-        {`IL: `}
-      </div>
     </div>
   )
 }

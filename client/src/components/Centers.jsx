@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './css/index.css';
 
 const Centers = ({players}) => {
   return (
@@ -6,7 +7,7 @@ const Centers = ({players}) => {
       return (
         <div>
           {`C: ${player.name} | ${player.team} - ${player.position}`}
-          <button>Drop</button>
+          <button className={styles.buttonDrop}>-</button>
         </div>
       )
     })
