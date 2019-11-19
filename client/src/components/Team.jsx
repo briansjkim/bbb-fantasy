@@ -117,17 +117,19 @@ const Team = ({ team, dropPlayer }) => {
   return (
     <table>
       <thead>
-        <th>Pos</th>
-        <th>Player</th>
-        <th>FG%</th>
-        <th>FT%</th>
-        <th>3PTM</th>
-        <th>PTS</th>
-        <th>REB</th>
-        <th>AST</th>
-        <th>ST</th>
-        <th>BLK</th>
-        <th>TO</th>
+        <tr>
+          <th>Pos</th>
+          <th>Player</th>
+          <th>FG%</th>
+          <th>FT%</th>
+          <th>3PTM</th>
+          <th>PTS</th>
+          <th>REB</th>
+          <th>AST</th>
+          <th>ST</th>
+          <th>BLK</th>
+          <th>TO</th>
+        </tr>
       </thead>
       <tbody>
         <PointGuards players={point} dropPlayer={dropPlayer} />
