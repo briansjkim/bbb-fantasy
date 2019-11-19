@@ -7,6 +7,7 @@
 
 .heading {
   text-align: center;
+  font-family: impact;
 }
 
 .playerSection {
@@ -74,7 +75,7 @@
 .playerInfo {
   display: flex;
   width: 30%;
-  margin: 20px;
+  margin: 0 auto;
   flex-flow: column nowrap;
 }
 
