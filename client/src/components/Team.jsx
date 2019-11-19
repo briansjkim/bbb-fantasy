@@ -9,7 +9,7 @@ import Centers from './Centers.jsx';
 import Util from './Util.jsx';
 import Bench from './Bench.jsx';
 
-const Team = ({team}) => {
+const Team = ({ team, dropPlayer }) => {
   var point = [];
   var shooting = [];
   var guards = [];
@@ -30,6 +30,11 @@ const Team = ({team}) => {
         if (util.length < 2) {
           util.push(player);
           return;
+        } else if (util.length === 2) {
+          if (bench.length < 3) {
+            bench.push(player);
+            return;
+          }
         }
       }
     } else if (player.position === 'SG' && shooting.length === 1) {
@@ -41,6 +46,14 @@ const Team = ({team}) => {
         if (util.length < 2) {
           util.push(player);
           return;
+        } else if (util.length === 2) {
+          if (bench.length < 3) {
+            bench.push(player);
+            return;
+          } else if (bench.length === 3) {
+            alert('No more additional players allowed');
+            return;
+          }
         }
       }
     } else if (player.position === 'PG') {
@@ -58,6 +71,14 @@ const Team = ({team}) => {
         if (util.length < 2) {
           util.push(player);
           return;
+        } else if (util.length === 2) {
+          if (bench.length < 3) {
+            bench.push(player);
+            return;
+          } else if (bench.length === 3) {
+            alert('No more additional players allowed');
+            return;
+          }
         }
       }
     } else if (player.position === 'PF' && power.length === 1) {
@@ -69,6 +90,14 @@ const Team = ({team}) => {
         if (util.length < 2) {
           util.push(player);
           return;
+        } else if (util.length === 2) {
+          if (bench.length < 3) {
+            bench.push(player);
+            return;
+          } else if (bench.length === 3) {
+            alert('No more additional players allowed');
+            return;
+          }
         }
       }
     } else if (player.position === 'SF') {
@@ -81,27 +110,33 @@ const Team = ({team}) => {
       if (centers.length < 1) {
         centers.push(player);
         return;
-      }
-    }
-
-    if (util.length === 2) {
-      if (bench.length < 3) {
-        bench.push(player);
+      } else if (centers.length === 1) {
+        if (util.length < 2) {
+          util.push(player);
+          return;
+        } else if (util.length === 2) {
+          if (bench.length < 3) {
+            bench.push(player);
+          } else if (bench.length === 3) {
+            alert('No more additional players allowed');
+            return;
+          }
+        }
       }
     }
   })
 
   return (
     <div>
-      <PointGuards players={point} />
-      <ShootingGuards players={shooting} />
-      <Guards players={guards} />
-      <SmallForwards players={small} />
-      <PowerForwards players={power} />
-      <Forwards players={forwards} />
-      <Centers players={centers} />
-      <Util players={util} />
-      <Bench players={bench} />
+      <PointGuards players={point} dropPlayer={dropPlayer} />
+      <ShootingGuards players={shooting} dropPlayer={dropPlayer} />
+      <Guards players={guards} dropPlayer={dropPlayer} />
+      <SmallForwards players={small} dropPlayer={dropPlayer} />
+      <PowerForwards players={power} dropPlayer={dropPlayer} />
+      <Forwards players={forwards} dropPlayer={dropPlayer} />
+      <Centers players={centers} dropPlayer={dropPlayer} />
+      <Util players={util} dropPlayer={dropPlayer} />
+      <Bench players={bench} dropPlayer={dropPlayer} />
     </div>
   )
 }

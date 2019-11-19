@@ -16,6 +16,8 @@ class App extends React.Component {
     this.addToTeam = this.addToTeam.bind(this);
     this.getPlayers = this.getPlayers.bind(this);
     this.getTeam = this.getTeam.bind(this);
+    // this.restartApp = this.restartApp.bind(this);
+    this.dropPlayer = this.dropPlayer.bind(this);
   }
 
   componentDidMount() {
@@ -36,7 +38,7 @@ class App extends React.Component {
 
   addToTeam(player) {
     axios.post('/api/fantasy/team', player)
-      .then(res => console.log('Successful Addition'))
+      .then(() => console.log('Successful Addition'))
       .then(() => {
         // deletes selected player from availablePlayers list
         axios.delete('/api/fantasy/player', {params: player});
@@ -46,33 +48,49 @@ class App extends React.Component {
       .catch(error => console.log('Error adding: ', error));
   }
 
+  dropPlayer(player) {
+    axios.delete('/api/fantasy/team', {params: player})
+      .then(() => console.log('Successful drop'))
+      .then(() => this.getPlayers())
+      .then(() => this.getTeam())
+      .catch(error => console.log('Error dropping and adding back to availablePlayers: ', error))
+  }
+
+  // restartApp() {
+  //   axios.delete('/api/fantasy/restart')
+  //     .then(() => console.log('Successfully deleted and re-seeded'))
+  //     // .then(res => this.setState({ players: res.data }))
+  //     .then((res) => console.log(res))
+  //     .catch((err) => console.log('Error resetting: ', err))
+  // }
+
   render() {
     return (
       <div>
-        <h1 className={styles.heading}>BBB Fantasy</h1>
+        <div>
+            <h1 className={styles.heading}>BIG BALLER BRIAN'S FANTASY</h1>
+        </div>
         <div className={styles.app}>
           <h1><u>Available Players</u></h1>
-          <table>
-            <tr>
-              <th>Player</th>
-              <th>FG</th>
-            </tr>
-            <tr className={styles.playerSection}>
-              <AvailablePlayers
-                players={this.state.players}
-                addToTeam={this.addToTeam}
-              />
-            </tr>
-            {/* <div className={styles.playerSection}>
-            </div> */}
-          </table>
+          <div className={styles.playerSection}>
+            <div className={styles.stats}>Player | Team-Position | FG% | FT% | 3PTM | PTS | REB | AST | ST | BLK | TO</div>
+            <AvailablePlayers
+              players={this.state.players}
+              addToTeam={this.addToTeam}
+            />
+          </div>
           <h1><u>Your Team</u></h1>
           <div className={styles.teamSection}>
+          <div className={styles.stats}>Player | Team-Position | FG% | FT% | 3PTM | PTS | REB | AST | ST | BLK | TO</div>
             <Team
               team={this.state.team}
+              dropPlayer={this.dropPlayer}
             />
           </div>
         </div>
+        {/* <div className={styles.buttonSection}>
+          <button className={styles.buttonReset} onClick={() => this.restartApp()}>Try Again</button>
+        </div> */}
       </div>
     )
   }

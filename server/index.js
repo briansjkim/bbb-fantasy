@@ -21,16 +21,21 @@ app.get('/api/fantasy/player', (req, res) => {
   })
 });
 
-// app.get('/api/fantasy/:playerId', (req, res) => {
-//   const { playerId } = req.params;
-//   db.getById(playerId, (err, results) => {
+// app.delete('/api/fantasy/restart', (req, res) => {
+//   db.deleteAll((err, results) => {
 //     if (err) {
-//       console.log('Error getting player: ', err);
+//       console.log('Error deleting and re-seeding: ', err);
 //     } else {
-//       res.send(results);
+//       db.getPlayer((err, results) => {
+//         if (err) {
+//           console.log('Error getting re-seeded players: ', err);
+//         } else {
+//           res.send(results);
+//         }
+//       })
 //     }
 //   });
-// })
+// });
 
 app.get('/api/fantasy/team', (req, res) => {
   // get all players from your team
@@ -44,7 +49,7 @@ app.get('/api/fantasy/team', (req, res) => {
 });
 
 app.post('/api/fantasy/player', (req, res) => {
-  // adding new players (if necessary)
+  // add player to availablePlayers
 });
 
 app.post('/api/fantasy/team', (req, res) => {
@@ -78,6 +83,14 @@ app.delete('/api/fantasy/player', (req, res) => {
 
 app.delete('/api/fantasy/team', (req, res) => {
   // delete player from myteam
+  db.deleteTeamPlayer(req.query, (err, results) => {
+    if (err) {
+      console.log('Error deleting from team: ', err);
+    } else {
+      res.status(200);
+      res.send(results);
+    }
+  })
 })
 
 

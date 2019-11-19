@@ -25,7 +25,7 @@ const seedPlayer = () => {
 
 const generateDecimal = () => {
   // returns a number instead of string from toFixed
-  return faker.finance.amount(0, 1, 3);
+  return faker.finance.amount(0.2, 1, 3);
 }
 
 const generateNumber = (min, max) => {

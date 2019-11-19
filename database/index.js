@@ -100,7 +100,7 @@ const add = (params, cb) => {
 const deleteTeamPlayer = (params, cb) => {
   Team.deleteOne({id: params.id})
     .then(() => {
-      Player.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team, fg: params.fg, ft: params.ft, threes: params.threes, pts: params.pts, reb: params.reb, ast: params.ast, st: params.stl, blk: params.blk, to: params.to}, (err, results) => {
+      Player.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team, fg: params.fg, ft: params.ft, threes: params.threes, pts: params.pts, reb: params.reb, ast: params.ast, stl: params.stl, blk: params.blk, to: params.to}, (err, results) => {
         if (err) {
           cb(err, null);
         } else {
