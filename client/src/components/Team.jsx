@@ -34,6 +34,9 @@ const Team = ({ team, dropPlayer }) => {
           if (bench.length < 3) {
             bench.push(player);
             return;
+          } else if (bench.length === 3) {
+            alert('No more additional players allowed');
+            return;
           }
         }
       }
