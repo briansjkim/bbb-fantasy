@@ -12,13 +12,8 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.get('/api/fantasy/player', (req, res) => {
-  db.getPlayer((err, results) => {
-    if (err) {
-      console.log('Error getting players: ', err);
-    } else {
-      res.send(results);
-    }
-  })
+  // get all players from available players
+  db.getPlayer(req, res);
 });
 
 // app.delete('/api/fantasy/restart', (req, res) => {
@@ -39,26 +34,12 @@ app.get('/api/fantasy/player', (req, res) => {
 
 app.get('/api/fantasy/team', (req, res) => {
   // get all players from your team
-  db.getTeam((err, results) => {
-    if (err) {
-      console.log('Error getting team: ', err);
-    } else {
-      res.send(results);
-    }
-  })
+  db.getTeam(req, res);
 });
 
 app.post('/api/fantasy/team', (req, res) => {
   // add to the team
-  // console.log(req)
-  db.add(req.body, (err, results) => {
-    if (err) {
-      console.log('Error adding to team: ', err);
-    } else {
-      res.status(200);
-      res.send(results);
-    }
-  })
+  db.add(req.body, req, res);
 });
 
 
@@ -68,26 +49,13 @@ app.put('/api/fantasy/player', (req, res) => {
 });
 
 app.delete('/api/fantasy/player', (req, res) => {
-  db.deletePlayer(req.query, (err, results) => {
-    if (err) {
-      console.log('Error deleting from available players: ', err);
-    } else {
-      res.status(200);
-      res.send(results);
-    }
-  })
+  // delete player from available players
+  db.deletePlayer(req.query, req, res);
 });
 
 app.delete('/api/fantasy/team', (req, res) => {
   // delete player from myteam
-  db.deleteTeamPlayer(req.query, (err, results) => {
-    if (err) {
-      console.log('Error deleting from team: ', err);
-    } else {
-      res.status(200);
-      res.send(results);
-    }
-  })
+  db.deleteTeamPlayer(req.query, req, res);
 })
 
 

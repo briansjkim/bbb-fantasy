@@ -41,37 +41,36 @@ const savePlayer = (id, name, number, position, team, fg, ft, threes, pts, reb, 
   });
 };
 // player schema functions
-const getPlayer = (cb) => {
+const getPlayer = (req,res) => {
   Player.find((err, data) => {
     if (err) {
-      cb(err, null);
+      res.send('Error getting players');
     } else {
-      cb(null, data);
+      res.send(data);
     }
   });
 };
 
-const deletePlayer = (params, cb) => {
+const deletePlayer = (params, req, res) => {
   // console.log(param);
   Player.findOneAndRemove({name: params.name}, (err, results) => {
     if (err) {
-      cb(err, null);
+      res.send('Error deleting player');
     } else {
-      cb(null, results);
+      res.send('Successfully deleted player');
     }
   })
 }
 
-const addPlayer = (params, req, res) => {
-  Player.create({})
-};
+// const addPlayer = (params, req, res) => {
+//   Player.create({})
+// };
 
 const updatePlayer = (params, req, res) => {
   let filter = { name: params.name};
   let update = { number: params.number, team: params.team };
   Player.findOneAndUpdate(filter, update, (err, results) => {
     if (err) {
-      console.log('Error updating: ', err);
       res.send('Error updating');
     } else {
       res.send('Successful update');
@@ -94,34 +93,34 @@ const saveTeam = (id, name, number, position, team, fg, ft, threes, pts, reb, as
   })
 };
 
-const getTeam = (cb) => {
+const getTeam = (req, res) => {
   Team.find((err, data) => {
     if (err) {
-      cb(err, null);
+      res.send('Error getting team');
     } else {
-      cb(null, data);
+      res.send(data);
     }
   })
 };
 
-const add = (params, cb) => {
+const add = (params, req, res) => {
   Team.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team, fg: params.fg, ft: params.ft, threes: params.threes, pts: params.pts, reb: params.reb, ast: params.ast, stl: params.stl, blk: params.blk, to: params.to}, (err, results) => {
     if (err) {
-      cb(err, null);
+      res.send('Error adding to team');
     } else {
-      cb(null, results);
+      res.send(results);
     }
   })
 }
 
-const deleteTeamPlayer = (params, cb) => {
+const deleteTeamPlayer = (params, req, res) => {
   Team.deleteOne({id: params.id})
     .then(() => {
       Player.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team, fg: params.fg, ft: params.ft, threes: params.threes, pts: params.pts, reb: params.reb, ast: params.ast, stl: params.stl, blk: params.blk, to: params.to}, (err, results) => {
         if (err) {
-          cb(err, null);
+          res.send('Error deleting player from team');
         } else {
-          cb(null, results);
+          res.send('Successfully deleted player from team');
         }
       })
     })
@@ -159,6 +158,6 @@ module.exports = {
   deletePlayer: deletePlayer,
   // deleteAll: deleteAll
   deleteTeamPlayer: deleteTeamPlayer,
-  addPlayer: addPlayer,
+  // addPlayer: addPlayer,
   updatePlayer: updatePlayer
 }

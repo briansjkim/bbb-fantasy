@@ -34,9 +34,6 @@ const Team = ({ team, dropPlayer }) => {
           if (bench.length < 3) {
             bench.push(player);
             return;
-          } else if (bench.length === 3) {
-            alert('No more additional players allowed');
-            return;
           }
         }
       }
@@ -52,9 +49,6 @@ const Team = ({ team, dropPlayer }) => {
         } else if (util.length === 2) {
           if (bench.length < 3) {
             bench.push(player);
-            return;
-          } else if (bench.length === 3) {
-            alert('No more additional players allowed');
             return;
           }
         }
@@ -78,9 +72,6 @@ const Team = ({ team, dropPlayer }) => {
           if (bench.length < 3) {
             bench.push(player);
             return;
-          } else if (bench.length === 3) {
-            alert('No more additional players allowed');
-            return;
           }
         }
       }
@@ -96,9 +87,6 @@ const Team = ({ team, dropPlayer }) => {
         } else if (util.length === 2) {
           if (bench.length < 3) {
             bench.push(player);
-            return;
-          } else if (bench.length === 3) {
-            alert('No more additional players allowed');
             return;
           }
         }
@@ -120,9 +108,6 @@ const Team = ({ team, dropPlayer }) => {
         } else if (util.length === 2) {
           if (bench.length < 3) {
             bench.push(player);
-          } else if (bench.length === 3) {
-            alert('No more additional players allowed');
-            return;
           }
         }
       }
@@ -130,17 +115,32 @@ const Team = ({ team, dropPlayer }) => {
   })
 
   return (
-    <div>
-      <PointGuards players={point} dropPlayer={dropPlayer} />
-      <ShootingGuards players={shooting} dropPlayer={dropPlayer} />
-      <Guards players={guards} dropPlayer={dropPlayer} />
-      <SmallForwards players={small} dropPlayer={dropPlayer} />
-      <PowerForwards players={power} dropPlayer={dropPlayer} />
-      <Forwards players={forwards} dropPlayer={dropPlayer} />
-      <Centers players={centers} dropPlayer={dropPlayer} />
-      <Util players={util} dropPlayer={dropPlayer} />
-      <Bench players={bench} dropPlayer={dropPlayer} />
-    </div>
+    <table>
+      <thead>
+        <th>Pos</th>
+        <th>Player</th>
+        <th>FG%</th>
+        <th>FT%</th>
+        <th>3PTM</th>
+        <th>PTS</th>
+        <th>REB</th>
+        <th>AST</th>
+        <th>ST</th>
+        <th>BLK</th>
+        <th>TO</th>
+      </thead>
+      <tbody>
+        <PointGuards players={point} dropPlayer={dropPlayer} />
+        <ShootingGuards players={shooting} dropPlayer={dropPlayer} />
+        <Guards players={guards} dropPlayer={dropPlayer} />
+        <SmallForwards players={small} dropPlayer={dropPlayer} />
+        <PowerForwards players={power} dropPlayer={dropPlayer} />
+        <Forwards players={forwards} dropPlayer={dropPlayer} />
+        <Centers players={centers} dropPlayer={dropPlayer} />
+        <Util players={util} dropPlayer={dropPlayer} />
+        <Bench players={bench} dropPlayer={dropPlayer} />
+      </tbody>
+    </table>
   )
 }
 

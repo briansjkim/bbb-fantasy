@@ -101,7 +101,6 @@ class App extends React.Component {
         <div className={styles.app}>
           <h1><u>Available Players</u></h1>
           <div className={styles.playerSection}>
-            <div className={styles.stats}>Player | Team-Position | FG% | FT% | 3PTM | PTS | REB | AST | ST | BLK | TO</div>
             <AvailablePlayers
               players={this.state.players}
               addToTeam={this.addToTeam}
@@ -109,7 +108,6 @@ class App extends React.Component {
           </div>
           <h1><u>Your Team</u></h1>
           <div className={styles.teamSection}>
-          <div className={styles.stats}>Player | Team-Position | FG% | FT% | 3PTM | PTS | REB | AST | ST | BLK | TO</div>
             <Team
               team={this.state.team}
               dropPlayer={this.dropPlayer}

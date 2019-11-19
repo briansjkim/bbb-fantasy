@@ -5,10 +5,44 @@ const SmallForwards = ({players, dropPlayer}) => {
   return (
     players.map( (player,index) => {
       return (
-        <div key={index}>
-          {`SF: ${player.name} | ${player.team} - ${player.position} | ${player.fg} ${player.ft} ${player.threes} ${player.pts} ${player.reb} ${player.ast} ${player.stl} ${player.blk} ${player.to}`}
-          <button className={styles.buttonDrop} value={player} onClick={() => dropPlayer(player)}>-</button>
-        </div>
+        <tr>
+          <td>
+            {`SF: `}
+          </td>
+          <td>
+            {`${player.name} ${player.team}-${player.position}`}
+          </td>
+          <td>
+            {player.fg}
+          </td>
+          <td>
+            {player.ft}
+          </td>
+          <td>
+            {player.threes}
+          </td>
+          <td>
+            {player.pts}
+          </td>
+          <td>
+            {player.reb}
+          </td>
+          <td>
+            {player.ast}
+          </td>
+          <td>
+            {player.stl}
+          </td>
+          <td>
+            {player.blk}
+          </td>
+          <td>
+            {player.to}
+          </td>
+          <td>
+            <button className={styles.buttonDrop} value={player} onClick={() => dropPlayer(player)}>-</button>
+          </td>
+        </tr>
       )
     })
   )

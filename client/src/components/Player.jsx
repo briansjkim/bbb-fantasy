@@ -4,10 +4,41 @@ import axios from 'axios';
 
 const Player = ({player, addToTeam}) => {
   return (
-    <div className={styles.player}>
-      {` ${player.name} | ${player.team} - ${player.position} | ${player.fg} | ${player.ft} | ${player.threes} | ${player.pts} | ${player.reb} | ${player.ast} | ${player.stl} | ${player.blk} | ${player.to}`}
+    <tr>
+      <td>
+        {`${player.name} ${player.team}-${player.position}`}
+      </td>
+      <td>
+        {player.fg}
+      </td>
+      <td>
+        {player.ft}
+      </td>
+      <td>
+        {player.threes}
+      </td>
+      <td>
+        {player.pts}
+      </td>
+      <td>
+        {player.reb}
+      </td>
+      <td>
+        {player.ast}
+      </td>
+      <td>
+        {player.stl}
+      </td>
+      <td>
+        {player.blk}
+      </td>
+      <td>
+        {player.to}
+      </td>
+      <td>
       <button className={styles.buttonAdd} value={player} onClick={(e) => addToTeam(player)}>+</button>
-    </div>
+      </td>
+    </tr>
   )
 }
 
