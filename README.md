@@ -5,9 +5,11 @@ Big Baller Brian Fantasy
 ## Usage ##
 RESTful API routes are all provided for CRUD operations
 GET request to retrieve all provided players
-POST request to add a new player
-PUT request to update a player
-DELETE request to delete a player
+GET request to retrieve all players in your team
+POST request to add a new player to your team
+PUT request to update a provided player
+DELETE request to delete a player from the provided players
+DELETE request to delete a player from your team
 
 ## Starting ##
  1. From the root directory, run the following command:
