@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const playerData = require('./playerData.js');
 mongoose.connect('mongodb://localhost/bbbfantasy', { useNewUrlParser: true, useUnifiedTopology: true});
 var db = mongoose.connection;
 
@@ -13,14 +14,23 @@ var playerSchema = new Schema({
   name: String,
   number: Number,
   position: String,
-  team: String
+  team: String,
+  fg: Number,
+  ft: Number,
+  threes: Number,
+  pts: Number,
+  reb: Number,
+  ast: Number,
+  stl: Number,
+  blk: Number,
+  to: Number
 });
 
 var Player = mongoose.model('Player', playerSchema);
 
 // used for seeding and saving new players
-const savePlayer = (id, name, number, position, team) => {
-  var newPlayer = new Player({id, name, number, position, team});
+const savePlayer = (id, name, number, position, team, fg, ft, threes, pts, reb, ast, stl, blk, to) => {
+  var newPlayer = new Player({id, name, number, position, team, fg, ft, threes, pts, reb, ast, stl, blk, to});
 
   newPlayer.save((err, player) => {
     if (err) {
@@ -41,16 +51,6 @@ const getPlayer = (cb) => {
   });
 };
 
-const getById = (playerId,cb) => {
-  Player.findOne({id: playerId}, (err, player) => {
-    if (err) {
-      cb(err, null);
-    } else {
-      cb(null, player);
-    }
-  })
-}
-
 const deletePlayer = (param, cb) => {
   // console.log(param);
   Player.deleteOne({id: param.id}, (err, results) => {
@@ -65,8 +65,8 @@ const deletePlayer = (param, cb) => {
 var Team = mongoose.model('Team', playerSchema);
 
 // team schema functions
-const saveTeam = (id, name, number, position, team) => {
-  var newTeam = new Team({id, name, number, position, team});
+const saveTeam = (id, name, number, position, team, fg, ft, threes, pts, reb, ast, stl, blk, to) => {
+  var newTeam = new Team({id, name, number, position, team, fg, ft, threes, pts, reb, ast, stl, blk, to});
 
   newTeam.save((err, player) => {
     if (err) {
@@ -88,7 +88,7 @@ const getTeam = (cb) => {
 };
 
 const add = (params, cb) => {
-  Team.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team}, (err, results) => {
+  Team.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team, fg: params.fg, ft: params.ft, threes: params.threes, pts: params.pts, reb: params.reb, ast: params.ast, stl: params.stl, blk: params.blk, to: params.to}, (err, results) => {
     if (err) {
       cb(err, null);
     } else {
@@ -97,12 +97,61 @@ const add = (params, cb) => {
   })
 }
 
+const deleteTeamPlayer = (params, cb) => {
+  Team.deleteOne({id: params.id})
+    .then(() => {
+      Player.create({id: params.id, name: params.name, number: params.number, position: params.position, team: params.team, fg: params.fg, ft: params.ft, threes: params.threes, pts: params.pts, reb: params.reb, ast: params.ast, st: params.stl, blk: params.blk, to: params.to}, (err, results) => {
+        if (err) {
+          cb(err, null);
+        } else {
+          cb(null, results);
+        }
+      })
+    })
+}
+
+const reSeed = () => {
+  for (player of playerData.players) {
+    let id = player.id;
+    let name = player.name;
+    let number = player.number;
+    let position = player.position;
+    let team = player.team;
+
+    savePlayer(id, name, number, position, team);
+  }
+}
+
+// team and player schema function
+// const deleteAll = (cb) => {
+//   // delete all data from player and team
+//   // Player.deleteMany({}, (err, results) => {
+//   //   if (err) {
+//   //     cb(err, null);
+//   //   } else {
+//   //     reSeed();
+//   //     Team.deleteMany({})
+//   //     cb(null, results);
+//   //   }
+//   // })
+
+//   Player.deleteMany({})
+//     .then(() => Team.deleteMany({}))
+//     .then(() => reSeed())
+//     .catch((err) => console.log('Error deleting and re-seeding', err))
+
+//     // delete all records from player collection
+//     // delete all records from team collection
+//     // re seed the player collection
+// }
+
 module.exports = {
   savePlayer: savePlayer,
   getPlayer: getPlayer,
-  getById: getById,
   saveTeam: saveTeam,
   getTeam: getTeam,
   add: add,
-  deletePlayer: deletePlayer
+  deletePlayer: deletePlayer,
+  // deleteAll: deleteAll
+  deleteTeamPlayer: deleteTeamPlayer
 }
