@@ -51,13 +51,30 @@ const getPlayer = (cb) => {
   });
 };
 
-const deletePlayer = (param, cb) => {
+const deletePlayer = (params, cb) => {
   // console.log(param);
-  Player.deleteOne({id: param.id}, (err, results) => {
+  Player.findOneAndRemove({name: params.name}, (err, results) => {
     if (err) {
       cb(err, null);
     } else {
       cb(null, results);
+    }
+  })
+}
+
+const addPlayer = (params, req, res) => {
+  Player.create({})
+};
+
+const updatePlayer = (params, req, res) => {
+  let filter = { name: params.name};
+  let update = { number: params.number, team: params.team };
+  Player.findOneAndUpdate(filter, update, (err, results) => {
+    if (err) {
+      console.log('Error updating: ', err);
+      res.send('Error updating');
+    } else {
+      res.send('Successful update');
     }
   })
 }
@@ -110,19 +127,7 @@ const deleteTeamPlayer = (params, cb) => {
     })
 }
 
-const reSeed = () => {
-  for (player of playerData.players) {
-    let id = player.id;
-    let name = player.name;
-    let number = player.number;
-    let position = player.position;
-    let team = player.team;
-
-    savePlayer(id, name, number, position, team);
-  }
-}
-
-// team and player schema function
+// team and player schema reset function
 // const deleteAll = (cb) => {
 //   // delete all data from player and team
 //   // Player.deleteMany({}, (err, results) => {
@@ -153,5 +158,7 @@ module.exports = {
   add: add,
   deletePlayer: deletePlayer,
   // deleteAll: deleteAll
-  deleteTeamPlayer: deleteTeamPlayer
+  deleteTeamPlayer: deleteTeamPlayer,
+  addPlayer: addPlayer,
+  updatePlayer: updatePlayer
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import AvailablePlayers from './AvailablePlayers.jsx';
 import Team from './Team.jsx';
+import UpdatePlayer from './UpdatePlayer.jsx';
 import styles from './css/index.css';
 import axios from 'axios';
 
@@ -18,6 +19,9 @@ class App extends React.Component {
     this.getTeam = this.getTeam.bind(this);
     // this.restartApp = this.restartApp.bind(this);
     this.dropPlayer = this.dropPlayer.bind(this);
+    this.updatePlayer = this.updatePlayer.bind(this);
+    this.deletePlayer = this.deletePlayer.bind(this);
+    // this.addPlayer = this.addPlayer.bind(this);
   }
 
   componentDidMount() {
@@ -48,6 +52,7 @@ class App extends React.Component {
       .catch(error => console.log('Error adding: ', error));
   }
 
+  // Drop player from Team
   dropPlayer(player) {
     axios.delete('/api/fantasy/team', {params: player})
       .then(() => console.log('Successful drop'))
@@ -63,6 +68,29 @@ class App extends React.Component {
   //     .then((res) => console.log(res))
   //     .catch((err) => console.log('Error resetting: ', err))
   // }
+
+  // addPlayer(player) {
+  //   axios.post('/api/fantasy/player', player)
+  //     .then(() => {
+  //       this.getPlayers();
+  //     })
+  //     .catch((err) => console.log('Error adding player'))
+  // }
+
+  updatePlayer(player) {
+    axios.put('/api/fantasy/player', player)
+      .then(() => {
+        this.getPlayers();
+      })
+      .catch((err) => console.log('Error updating player'))
+  }
+
+  deletePlayer(player) {
+    axios.delete('/api/fantasy/player', {params: player})
+      .then(() => this.getPlayers())
+      .catch((err) => console.log('Error deleting player'))
+  }
+
 
   render() {
     return (
@@ -91,6 +119,12 @@ class App extends React.Component {
         {/* <div className={styles.buttonSection}>
           <button className={styles.buttonReset} onClick={() => this.restartApp()}>Try Again</button>
         </div> */}
+        <div>
+          <UpdatePlayer
+            deletePlayer={this.deletePlayer}
+            updatePlayer={this.updatePlayer}
+            />
+        </div>
       </div>
     )
   }

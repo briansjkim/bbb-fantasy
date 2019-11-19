@@ -48,10 +48,6 @@ app.get('/api/fantasy/team', (req, res) => {
   })
 });
 
-app.post('/api/fantasy/player', (req, res) => {
-  // add player to availablePlayers
-});
-
 app.post('/api/fantasy/team', (req, res) => {
   // add to the team
   // console.log(req)
@@ -66,8 +62,9 @@ app.post('/api/fantasy/team', (req, res) => {
 });
 
 
-app.put('/api/fantasy', (req, res) => {
+app.put('/api/fantasy/player', (req, res) => {
   // update players if trades/number change/etc.
+  db.updatePlayer(req.body, req, res)
 });
 
 app.delete('/api/fantasy/player', (req, res) => {
