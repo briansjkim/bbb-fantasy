@@ -48,7 +48,7 @@ const getPlayer = (req,res) => {
     } else {
       res.send(data);
     }
-  });
+  }).limit(25)
 };
 
 const deletePlayer = (params, req, res) => {
@@ -156,8 +156,6 @@ module.exports = {
   getTeam: getTeam,
   add: add,
   deletePlayer: deletePlayer,
-  // deleteAll: deleteAll
   deleteTeamPlayer: deleteTeamPlayer,
-  // addPlayer: addPlayer,
   updatePlayer: updatePlayer
 }
