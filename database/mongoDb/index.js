@@ -42,13 +42,13 @@ const savePlayer = (id, name, number, position, team, fg, ft, threes, pts, reb, 
 };
 // player schema functions
 const getPlayer = (req,res) => {
-  Player.find((err, data) => {
+  Player.find({}, (err, data) => {
     if (err) {
       res.send('Error getting players');
     } else {
       res.send(data);
     }
-  }).limit(25)
+  })
 };
 
 const deletePlayer = (params, req, res) => {

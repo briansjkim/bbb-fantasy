@@ -36,6 +36,7 @@ class App extends React.Component {
 
   getTeam() {
     axios.get('/api/fantasy/team')
+    // .then(res => console.log(res.data))
       .then(res => this.setState({ team: res.data }))
       .catch(error => console.log('Error getting team: ', error))
   }

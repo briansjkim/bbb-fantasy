@@ -21,7 +21,7 @@ const Team = ({ team, dropPlayer }) => {
   var bench = [];
 
   team.forEach(player => {
-    if (player.position === 'PG' && point.length === 1) {
+    if (player.player_position === 'PG' && point.length === 1) {
       // for players that are a PG
       if (guards.length < 1) {
         guards.push(player);
@@ -37,7 +37,7 @@ const Team = ({ team, dropPlayer }) => {
           }
         }
       }
-    } else if (player.position === 'SG' && shooting.length === 1) {
+    } else if (player.player_position === 'SG' && shooting.length === 1) {
       // for players that are a SG
       if (guards.length < 1) {
         guards.push(player);
@@ -53,13 +53,13 @@ const Team = ({ team, dropPlayer }) => {
           }
         }
       }
-    } else if (player.position === 'PG') {
+    } else if (player.player_position === 'PG') {
       point.push(player);
       return;
-    } else if (player.position === 'SG') {
+    } else if (player.player_position === 'SG') {
       shooting.push(player);
       return;
-    } else if (player.position === 'SF' && small.length === 1) {
+    } else if (player.player_position === 'SF' && small.length === 1) {
       // for players that are a SF
       if (forwards.length < 1) {
         forwards.push(player);
@@ -75,7 +75,7 @@ const Team = ({ team, dropPlayer }) => {
           }
         }
       }
-    } else if (player.position === 'PF' && power.length === 1) {
+    } else if (player.player_position === 'PF' && power.length === 1) {
       // for players that are a PF
       if (forwards.length < 1) {
         forwards.push(player);
@@ -91,13 +91,13 @@ const Team = ({ team, dropPlayer }) => {
           }
         }
       }
-    } else if (player.position === 'SF') {
+    } else if (player.player_position === 'SF') {
       small.push(player);
       return;
-    } else if (player.position === 'PF') {
+    } else if (player.player_position === 'PF') {
       power.push(player);
       return;
-    } else if (player.position === 'C') {
+    } else if (player.player_position === 'C') {
       if (centers.length < 1) {
         centers.push(player);
         return;

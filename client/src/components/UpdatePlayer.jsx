@@ -35,9 +35,9 @@ class UpdatePlayer extends React.Component {
       <div className={styles.playerInfo}>
         <h2>Player Information</h2>
         <label>Player's Name</label>
-        <input type="text" id="name" onChange={this.handleChange} placeholder="K. Bryant" required></input>
+        <input type="text" id="player_name" onChange={this.handleChange} placeholder="K. Bryant" required></input>
         <label>Player's Team</label>
-        <input type="text" id="team" onChange={this.handleChange}></input>
+        <input type="text" id="player_team" onChange={this.handleChange}></input>
         <button onClick={this.updateForm} className={styles.buttonUpdate}>Update Player</button>
         <button onClick={this.deleteForm} className={styles.buttonDelete}>Delete Player</button>
       </div>

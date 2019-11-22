@@ -6,7 +6,7 @@ const Player = ({player, addToTeam}) => {
   return (
     <tr>
       <td>
-        {`${player.name} ${player.team}-${player.position}`}
+        {`${player.player_name} ${player.player_team}-${player.player_position}`}
       </td>
       <td>
         {player.fg}
@@ -33,7 +33,7 @@ const Player = ({player, addToTeam}) => {
         {player.blk}
       </td>
       <td>
-        {player.to}
+        {player.tov}
       </td>
       <td>
       <button className={styles.buttonAdd} value={player} onClick={(e) => addToTeam(player)}>+</button>

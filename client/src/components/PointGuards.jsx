@@ -10,7 +10,7 @@ const PointGuards = ({players, dropPlayer}) => {
             {`PG: `}
           </td>
           <td>
-            {`${player.name} ${player.team}-${player.position}`}
+            {`${player.player_name} ${player.player_team}-${player.player_position}`}
           </td>
           <td>
             {player.fg}
@@ -37,7 +37,7 @@ const PointGuards = ({players, dropPlayer}) => {
             {player.blk}
           </td>
           <td>
-            {player.to}
+            {player.tov}
           </td>
           <td>
             <button className={styles.buttonDrop} value={player} onClick={() => dropPlayer(player)}>-</button>

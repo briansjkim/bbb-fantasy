@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-const db = require('../database/index.js');
+// const db = require('../database/index.js');
+const db = require('../database/pgIndex.js');
 const app = express();
 const port = process.env.PORT || 5896;
 
@@ -16,22 +17,6 @@ app.get('/api/fantasy/player', (req, res) => {
   db.getPlayer(req, res);
 });
 
-// app.delete('/api/fantasy/restart', (req, res) => {
-//   db.deleteAll((err, results) => {
-//     if (err) {
-//       console.log('Error deleting and re-seeding: ', err);
-//     } else {
-//       db.getPlayer((err, results) => {
-//         if (err) {
-//           console.log('Error getting re-seeded players: ', err);
-//         } else {
-//           res.send(results);
-//         }
-//       })
-//     }
-//   });
-// });
-
 app.get('/api/fantasy/team', (req, res) => {
   // get all players from your team
   db.getTeam(req, res);
@@ -39,23 +24,27 @@ app.get('/api/fantasy/team', (req, res) => {
 
 app.post('/api/fantasy/team', (req, res) => {
   // add to the team
-  db.add(req.body, req, res);
+  // db.add(req.body, req, res);
+  db.addToTeam(req, res);
 });
 
 
 app.put('/api/fantasy/player', (req, res) => {
   // update players if trades/number change/etc.
-  db.updatePlayer(req.body, req, res)
+  // db.updatePlayer(req.body, req, res)
+  db.updatePlayer(req, res);
 });
 
 app.delete('/api/fantasy/player', (req, res) => {
   // delete player from available players
-  db.deletePlayer(req.query, req, res);
+  // db.deletePlayer(req.query, req, res);
+  db.deletePlayer(req, res);
 });
 
 app.delete('/api/fantasy/team', (req, res) => {
   // delete player from myteam
-  db.deleteTeamPlayer(req.query, req, res);
+  // db.deleteTeamPlayer(req.query, req, res);
+  db.deleteFromTeam(req, res);
 })
 
 

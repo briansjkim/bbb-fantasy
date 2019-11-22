@@ -38,9 +38,5 @@ bower_components/
 bundle.js
 
 # data
-database/csvFile
-database/pgConnect.js
-database/pgIndex.js
-database/pgSeed.js
 database/playerData.js
-database/teamData.js
+database/csv
