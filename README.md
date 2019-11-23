@@ -1,5 +1,5 @@
 # Project Name
-Big Baller Brian Fantasy
+BBB Fantasy
  > The goal of this project is to build your dream team without any interference.
  
 ## Usage ##
