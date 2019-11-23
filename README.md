@@ -1,6 +1,6 @@
 # Project Name
 BBB Fantasy
- > The goal of this project is to build your dream team without any interference.
+ > BBB Fantasy is an app that allows users to build their dream basketball team without any interference. This app separates the available players that a user can choose from and their team of chosen players. Users are able to remove players from their team if they change their mind and see that player be added back onto the available players list.
  
 ## Usage ##
 RESTful API routes are all provided for CRUD operations<br/>
