@@ -22,7 +22,6 @@ const Team = ({ team, dropPlayer }) => {
 
   team.forEach(player => {
     if (player.player_position === 'PG' && point.length === 1) {
-      // for players that are a PG
       if (guards.length < 1) {
         guards.push(player);
         return;
@@ -38,7 +37,6 @@ const Team = ({ team, dropPlayer }) => {
         }
       }
     } else if (player.player_position === 'SG' && shooting.length === 1) {
-      // for players that are a SG
       if (guards.length < 1) {
         guards.push(player);
         return;
@@ -60,7 +58,6 @@ const Team = ({ team, dropPlayer }) => {
       shooting.push(player);
       return;
     } else if (player.player_position === 'SF' && small.length === 1) {
-      // for players that are a SF
       if (forwards.length < 1) {
         forwards.push(player);
         return;
@@ -76,7 +73,6 @@ const Team = ({ team, dropPlayer }) => {
         }
       }
     } else if (player.player_position === 'PF' && power.length === 1) {
-      // for players that are a PF
       if (forwards.length < 1) {
         forwards.push(player);
         return;

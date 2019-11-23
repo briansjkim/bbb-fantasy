@@ -17,11 +17,9 @@ class App extends React.Component {
     this.addToTeam = this.addToTeam.bind(this);
     this.getPlayers = this.getPlayers.bind(this);
     this.getTeam = this.getTeam.bind(this);
-    // this.restartApp = this.restartApp.bind(this);
     this.dropPlayer = this.dropPlayer.bind(this);
     this.updatePlayer = this.updatePlayer.bind(this);
     this.deletePlayer = this.deletePlayer.bind(this);
-    // this.addPlayer = this.addPlayer.bind(this);
   }
 
   componentDidMount() {
@@ -36,7 +34,6 @@ class App extends React.Component {
 
   getTeam() {
     axios.get('/api/fantasy/team')
-    // .then(res => console.log(res.data))
       .then(res => this.setState({ team: res.data }))
       .catch(error => console.log('Error getting team: ', error))
   }
@@ -45,7 +42,6 @@ class App extends React.Component {
     axios.post('/api/fantasy/team', player)
       .then(() => console.log('Successful Addition'))
       .then(() => {
-        // deletes selected player from availablePlayers list
         axios.delete('/api/fantasy/player', {params: player});
       })
       .then(() => this.getPlayers())
@@ -53,7 +49,6 @@ class App extends React.Component {
       .catch(error => console.log('Error adding: ', error));
   }
 
-  // Drop player from Team
   dropPlayer(player) {
     axios.delete('/api/fantasy/team', {params: player})
       .then(() => console.log('Successful drop'))
@@ -61,22 +56,6 @@ class App extends React.Component {
       .then(() => this.getTeam())
       .catch(error => console.log('Error dropping and adding back to availablePlayers: ', error))
   }
-
-  // restartApp() {
-  //   axios.delete('/api/fantasy/restart')
-  //     .then(() => console.log('Successfully deleted and re-seeded'))
-  //     // .then(res => this.setState({ players: res.data }))
-  //     .then((res) => console.log(res))
-  //     .catch((err) => console.log('Error resetting: ', err))
-  // }
-
-  // addPlayer(player) {
-  //   axios.post('/api/fantasy/player', player)
-  //     .then(() => {
-  //       this.getPlayers();
-  //     })
-  //     .catch((err) => console.log('Error adding player'))
-  // }
 
   updatePlayer(player) {
     axios.put('/api/fantasy/player', player)
@@ -115,9 +94,6 @@ class App extends React.Component {
             />
           </div>
         </div>
-        {/* <div className={styles.buttonSection}>
-          <button className={styles.buttonReset} onClick={() => this.restartApp()}>Try Again</button>
-        </div> */}
         <div>
           <UpdatePlayer
             deletePlayer={this.deletePlayer}
