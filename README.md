@@ -3,7 +3,7 @@ BBB Fantasy
  > The goal of this project is to build your dream team without any interference.
  
 ## Usage ##
-RESTful API routes are all provided for CRUD operations
+RESTful API routes are all provided for CRUD operations<br/>
 GET request to retrieve all provided players
 GET request to retrieve all players in your team
 POST request to add a new player to your team
