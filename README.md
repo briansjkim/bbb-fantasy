@@ -18,7 +18,7 @@ DELETE request to delete a player from your team<br/>
    > npm run start
 
 ## Technologies Used ##
- React
+ React, Node.js/Express, PostgreSQL
 ### Installing Dependencies ###
  From within the root directory:
  > npm install -g webpack
