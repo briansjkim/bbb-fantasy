@@ -1,9 +1,8 @@
 import React from 'react';
-import styles from './css/index.css';
 
-const Bench = ({players, dropPlayer}) => {
+const Bench = ({ players, dropPlayer }) => {
   return (
-    players.map( (player, index) => {
+    players.map((player, index) => {
       return (
         <tr>
           <td>

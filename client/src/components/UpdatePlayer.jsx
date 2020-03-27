@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './css/index.css';
 
 class UpdatePlayer extends React.Component {
   constructor(props) {

@@ -2,8 +2,14 @@ import React from 'react';
 import AvailablePlayers from './AvailablePlayers.jsx';
 import Team from './Team.jsx';
 import UpdatePlayer from './UpdatePlayer.jsx';
-import styles from './css/index.css';
+import styled from 'styled-components';
 import axios from 'axios';
+
+const Heading = styled.h1`
+  text-align: center;
+  font-family: impact;
+`
+
 
 class App extends React.Component {
   constructor() {
