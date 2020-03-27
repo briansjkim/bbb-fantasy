@@ -1,4 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ButtonDrop = styled.button`
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  margin: 10px;
+
+  &:hover {
+    background-color: red;
+  }
+`;
+
 
 const Bench = ({ players, dropPlayer }) => {
   return (
@@ -39,8 +52,7 @@ const Bench = ({ players, dropPlayer }) => {
             {player.tov}
           </td>
           <td>
-            <button className={styles.buttonDrop} value={player} onClick={() => dropPlayer(player)}>-</button>
-          </td>
+            <ButtonDrop value={player} onClick={() => dropPlayer(player)}>-</ButtonDrop></td>
         </tr>
       )
     })

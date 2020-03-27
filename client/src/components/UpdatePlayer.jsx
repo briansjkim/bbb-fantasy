@@ -1,4 +1,38 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ButtonUpdate = styled.button`
+  padding: 4px 10px;
+  margin: 20px 0px 0px 0px;
+  cursor: pointer;
+`;
+
+const ButtonDelete = styled.button`
+  padding: 4px 10px;
+  margin: 10px 0px 0px 0px;
+  cursor: pointer;
+`
+
+const PlayerInfo = styled.div`
+  display: flex;
+  width: 30%;
+  margin: 0 auto;
+  flex-flow: column nowrap;
+`;
+
+const PlayerInfoHeading = styled.h2`
+  border-bottom: 2px solid black;
+`;
+
+const PlayerTitle = styled.label`
+  margin-top: 20px;
+`;
+
+const PlayerInput = styled.input`
+  width: 100%;
+  padding: 5px;
+  box-sizing: border-box;
+`
 
 class UpdatePlayer extends React.Component {
   constructor(props) {
@@ -31,15 +65,15 @@ class UpdatePlayer extends React.Component {
 
   render() {
     return (
-      <div className={styles.playerInfo}>
-        <h2>Player Information</h2>
-        <label>Player's Name</label>
-        <input type="text" id="player_name" onChange={this.handleChange} placeholder="K. Bryant" required></input>
-        <label>Player's Team</label>
-        <input type="text" id="player_team" onChange={this.handleChange}></input>
-        <button onClick={this.updateForm} className={styles.buttonUpdate}>Update Player</button>
-        <button onClick={this.deleteForm} className={styles.buttonDelete}>Delete Player</button>
-      </div>
+      <PlayerInfo>
+        <PlayerInfoHeading>Player Information</PlayerInfoHeading>
+        <PlayerTitle>Player's Name</PlayerTitle>
+        <PlayerInput type="text" id="player_name" onChange={this.handleChange} placeholder="K. Bryant" required></PlayerInput>
+        <PlayerTitle>Player's Team</PlayerTitle>
+        <PlayerInput type="text" id="player_team" onChange={this.handleChange}></PlayerInput>
+        <ButtonUpdate onClick={this.updateForm}>Update Player</ButtonUpdate>
+        <ButtonDelete onClick={this.deleteForm}>Delete Player</ButtonDelete>
+      </PlayerInfo>
     )
   }
 }

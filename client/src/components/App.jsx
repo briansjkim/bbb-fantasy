@@ -8,8 +8,35 @@ import axios from 'axios';
 const Heading = styled.h1`
   text-align: center;
   font-family: impact;
-`
+`;
 
+const AppDiv = styled.div`
+  display: flex;
+  flex-flow: row;
+  text-align: center;
+  border-top: 1px solid black;
+`;
+
+const PlayerSection = styled.div`
+  display: inline-block;
+  border-right: 1px hidden;
+  width: 50%;
+  margin: 0 auto;
+  top: 0;
+  overflow-y: auto;
+  height: 500px;
+  text-align: left;
+`;
+
+const TeamSection = styled.div`
+  display: inline-block;
+  border-left: 5px hidden;
+  width: 50%;
+  margin: 0 auto;
+  top: 0;
+  position: relative;
+  text-align: left;
+`
 
 class App extends React.Component {
   constructor() {
@@ -80,24 +107,24 @@ class App extends React.Component {
     return (
       <div>
         <div>
-          <h1 className={styles.heading}>BIG BALLER BRIAN'S FANTASY</h1>
+          <Heading>BIG BALLER BRIAN'S FANTASY</Heading>
         </div>
-        <div className={styles.app}>
+        <AppDiv>
           <h1><u>Available Players</u></h1>
-          <div className={styles.playerSection}>
+          <PlayerSection>
             <AvailablePlayers
               players={this.state.players}
               addToTeam={this.addToTeam}
             />
-          </div>
+          </PlayerSection>
           <h1><u>Your Team</u></h1>
-          <div className={styles.teamSection}>
+          <TeamSection>
             <Team
               team={this.state.team}
               dropPlayer={this.dropPlayer}
             />
-          </div>
-        </div>
+          </TeamSection>
+        </AppDiv>
         <div>
           <UpdatePlayer
             deletePlayer={this.deletePlayer}

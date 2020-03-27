@@ -1,5 +1,16 @@
 import React from 'react';
-import axios from 'axios';
+import styled from 'styled-components';
+
+const ButtonAdd = styled.button`
+  background-color: white;
+  color: black;
+  border-radius: 2px;
+  margin: 10px;
+
+  &:hover {
+    background-color: #00FF7F;
+  }
+`;
 
 const Player = ({ player, addToTeam }) => {
   return (
@@ -35,7 +46,7 @@ const Player = ({ player, addToTeam }) => {
         {player.tov}
       </td>
       <td>
-        <button className={styles.buttonAdd} value={player} onClick={(e) => addToTeam(player)}>+</button>
+        <ButtonDrop value={player} onClick={(e) => addToTeam(player)}>+</ButtonDrop>
       </td>
     </tr>
   )

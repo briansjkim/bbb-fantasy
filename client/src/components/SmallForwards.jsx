@@ -1,4 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ButtonDrop = styled.button`
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  margin: 10px;
+
+  &:hover {
+    background-color: red;
+  }
+`;
 
 const SmallForwards = ({ players, dropPlayer }) => {
   return (
@@ -39,7 +51,7 @@ const SmallForwards = ({ players, dropPlayer }) => {
             {player.tov}
           </td>
           <td>
-            <button className={styles.buttonDrop} value={player} onClick={() => dropPlayer(player)}>-</button>
+            <ButtonDrop value={player} onClick={() => dropPlayer(player)}>-</ButtonDrop>
           </td>
         </tr>
       )
