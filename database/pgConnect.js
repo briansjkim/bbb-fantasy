@@ -95,13 +95,11 @@ pool.connect()
   })
   .then(() => {
     pool.query(`
-
 CREATE TABLE blk (
   blk_id SERIAL PRIMARY KEY,
   player_id INT REFERENCES players (id) ON UPDATE CASCADE,
   blk INT NOT NULL,
 )
-
   `)
   })
   .then(() => {
@@ -115,13 +113,11 @@ CREATE TABLE blk (
   })
   .then(() => {
     pool.query(`
-
 CREATE TABLE team_fg (
   tfg_id SERIAL PRIMARY KEY,
   player_id INT REFERENCES team (id) ON UPDATE CASCADE,
   team_fg DECIMAL NOT NULL
 )
-
   `)
   })
   .then(() => {
@@ -131,7 +127,6 @@ CREATE TABLE team_fg (
     player_id INT REFERENCES team (id) ON UPDATE CASCADE ON DELETE CASCADE,
     team_ft DECIMAL NOT NULL
   )
-
   `)
   })
   .then(() => {
@@ -186,7 +181,6 @@ CREATE TABLE team_fg (
     player_id INT REFERENCES team (id) ON UPDATE CASCADE ON DELETE CASCADE,
     team_tov INT NOT ULL
   )
-
   `)
   })
   .catch((error) => console.log("error: ", error))
