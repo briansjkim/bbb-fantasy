@@ -28,33 +28,31 @@ class App extends React.Component {
 
   getPlayers() {
     axios.get('/api/fantasy/player')
-      .then(res => this.setState({ players: res.data}))
-      .catch(error => console.log('Error getting players: ', error));
+      .then(res => this.setState({ players: res.data }))
+      .catch(error => { throw error });
   }
 
   getTeam() {
     axios.get('/api/fantasy/team')
       .then(res => this.setState({ team: res.data }))
-      .catch(error => console.log('Error getting team: ', error))
+      .catch(error => { throw error })
   }
 
   addToTeam(player) {
     axios.post('/api/fantasy/team', player)
-      .then(() => console.log('Successful Addition'))
       .then(() => {
-        axios.delete('/api/fantasy/player', {params: player});
+        axios.delete('/api/fantasy/player', { params: player });
       })
       .then(() => this.getPlayers())
       .then(() => this.getTeam())
-      .catch(error => console.log('Error adding: ', error));
+      .catch(error => { throw error });
   }
 
   dropPlayer(player) {
-    axios.delete('/api/fantasy/team', {params: player})
-      .then(() => console.log('Successful drop'))
+    axios.delete('/api/fantasy/team', { params: player })
       .then(() => this.getPlayers())
       .then(() => this.getTeam())
-      .catch(error => console.log('Error dropping and adding back to availablePlayers: ', error))
+      .catch(error => { throw error })
   }
 
   updatePlayer(player) {
@@ -62,13 +60,13 @@ class App extends React.Component {
       .then(() => {
         this.getPlayers();
       })
-      .catch((err) => console.log('Error updating player'))
+      .catch((error) => { throw error })
   }
 
   deletePlayer(player) {
-    axios.delete('/api/fantasy/player', {params: player})
+    axios.delete('/api/fantasy/player', { params: player })
       .then(() => this.getPlayers())
-      .catch((err) => console.log('Error deleting player'))
+      .catch((err) => { throw error })
   }
 
 
@@ -76,7 +74,7 @@ class App extends React.Component {
     return (
       <div>
         <div>
-            <h1 className={styles.heading}>BIG BALLER BRIAN'S FANTASY</h1>
+          <h1 className={styles.heading}>BIG BALLER BRIAN'S FANTASY</h1>
         </div>
         <div className={styles.app}>
           <h1><u>Available Players</u></h1>
@@ -98,7 +96,7 @@ class App extends React.Component {
           <UpdatePlayer
             deletePlayer={this.deletePlayer}
             updatePlayer={this.updatePlayer}
-            />
+          />
         </div>
       </div>
     )
