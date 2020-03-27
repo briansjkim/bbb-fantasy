@@ -27,7 +27,7 @@ module.exports = {
   },
 
   deletePlayer(req, res) {
-    const { player_name }  = req.query;
+    const { player_name } = req.query;
     pool.query('DELETE FROM players WHERE player_name = $1', [player_name], (err, results) => {
       if (err) {
         throw err;
