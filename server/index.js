@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const db = require('../database/pgIndex.js');
 const app = express();
-let port = 5896;
+let port = 1234;
 
 
 app.use(express.static(path.join(__dirname + '/../client/dist')));
