@@ -17,7 +17,8 @@ DELETE request to delete a player from your team<br/>
  2. From the same root directory, run the following command:
    > npm run start
 
-## Development ##
+## Technologies Used ##
+ React
 ### Installing Dependencies ###
  From within the root directory:
  > npm install -g webpack
